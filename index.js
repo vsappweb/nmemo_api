@@ -86,6 +86,11 @@ app.use("/api/events", eventRoute);
 app.use("/api/preparedTexts", preparedTextRoute);
 
 
+app.get("/", (req,res)=>{
+    res.send("Backend server is running!!!")
+});
+
+
 app.listen(8800, () => {
     console.log("Backend server is running!!!")
 });
