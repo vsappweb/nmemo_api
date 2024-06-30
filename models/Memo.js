@@ -5,6 +5,9 @@ const MemoSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    line: {
+        type: String,
+    },
     title: {
         type: String,
         max: 200

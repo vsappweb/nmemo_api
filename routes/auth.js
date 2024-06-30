@@ -1,13 +1,14 @@
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const User = require("../models/User")
+const dotenv = require("dotenv");
 
 
 //register
 router.post("/register", async (req, res) => {
     try {
         //generate new password
-        const salt = await bcrypt.genSalt(13);
+        const salt = await bcrypt.genSalt(process.env.SALT_PASS);
         const hashedPassword = await bcrypt.hash(req.body.password, salt);
         // create new user
         const newUser = await new User({
