@@ -8,7 +8,7 @@ const dotenv = require("dotenv");
 router.post("/register", async (req, res) => {
     try {
         //generate new password
-        const salt = await bcrypt.genSalt(process.env.SALT_PASS);
+        const salt = await bcrypt.genSalt(13);
         const hashedPassword = await bcrypt.hash(req.body.password, salt);
         // create new user
         const newUser = await new User({
