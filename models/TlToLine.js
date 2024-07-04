@@ -22,9 +22,24 @@ const TlToLineSchema = new mongoose.Schema({
     timer: {
         type: String
     },
+    reqRes: {
+        type: Boolean,
+        default: false,
+    },
     isRead: {
         type: Array,
         default: []
+    },
+    agrees: {
+        type: Array,
+        default: []
+    },
+    disagrees: {
+        type: Array,
+        default: []
+    },
+    answer: {
+        type: String,
     },
 
 },
