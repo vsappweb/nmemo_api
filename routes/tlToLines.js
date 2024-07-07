@@ -87,6 +87,40 @@ router.put("/:id/isRead", async (req, res) => {
     }
 }); 
 
+// like/dislike a post
+router.put("/:id/agree", async (req, res) => {
+    try {
+        const tlToLine = await TlToLine.findById(req.params.id);
+        if (!tlToLine.agrees.includes(req.body.userId)) {
+            await tlToLine.updateOne({ $push: { agrees: req.body.userId } });
+            res.status(200).json("The post has been agreed");
+        } else {
+            await tlToLine.updateOne({ $pull: { agrees: req.body.userId } });
+            res.status(200).json("The post has been disagreed");
+        }
+
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
+// like/dislike a post
+router.put("/:id/disagree", async (req, res) => {
+    try {
+        const tlToLine = await TlToLine.findById(req.params.id);
+        if (!tlToLine.disagrees.includes(req.body.userId)) {
+            await tlToLine.updateOne({ $push: { disagrees: req.body.userId } });
+            res.status(200).json("The post has been disagreed");
+        } else {
+            await tlToLine.updateOne({ $pull: { disagrees: req.body.userId } });
+            res.status(200).json("The post has been disdisagreed");
+        }
+
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
 // get timeline memos
 router.get("/timeline/:userId", async (req, res) => {
     try {
