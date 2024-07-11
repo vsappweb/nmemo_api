@@ -16,6 +16,8 @@ const shiftTransferValuesAndDescsRoute = require("./routes/shiftTransferValuesAn
 const shiftTransfersRoute = require("./routes/shiftTransfers");
 const conversationRoute = require("./routes/conversations");
 const messageRoute = require("./routes/messages");
+const incompleetAantalRoute = require("./routes/incompleetAantals");
+const gmToolRoute = require("./routes/gmTools");
 const multer = require("multer");
 const path = require("path");
 const cors = require('cors')
@@ -84,6 +86,8 @@ app.use("/api/shiftTransferValuesAndDescs", shiftTransferValuesAndDescsRoute);
 app.use("/api/shiftTransfers", shiftTransfersRoute);
 app.use("/api/events", eventRoute);
 app.use("/api/preparedTexts", preparedTextRoute);
+app.use("/api/incompleetAantals", incompleetAantalRoute);
+app.use("/api/gmTools", gmToolRoute);
 
 
 app.get("", (req,res)=>{
