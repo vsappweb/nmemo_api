@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const ShiftTransferValuesAndDesc = require("../models/ShiftTransferValuesAndDesc");
+const Stempel = require("../models/Stempel");
 const User = require("../models/User");
 
 // router.get("/", (req, res) => {
@@ -8,10 +8,10 @@ const User = require("../models/User");
 
 //create a shift transfer values and descriptions
 router.post("/", async (req, res) => {
-    const newShiftTransferValuesAndDesc = new ShiftTransferValuesAndDesc(req.body);
+    const newStempel = new Stempel(req.body);
     try {
-        const savedShiftTransferValuesAndDesc = await newShiftTransferValuesAndDesc.save();
-        res.status(201).json(savedShiftTransferValuesAndDesc);
+        const savedStempel = await newStempel.save();
+        res.status(201).json(savedStempel);
     } catch (err) {
         res.status(500).json(err);
         console.log(err);
@@ -21,9 +21,9 @@ router.post("/", async (req, res) => {
 // update a shift transfer values and descriptions
 router.put("/:id", async (req, res) => {
     try {
-        const ShiftTransferValuesAndDescs = await ShiftTransferValuesAndDesc.findById(req.params.id);
-        // if (ShiftTransferValuesAndDesc.lineId === req.body.lineId) {
-            await ShiftTransferValuesAndDescs.updateOne({ $set: req.body });
+        const Stempels = await Stempel.findById(req.params.id);
+        // if (Stempel.lineId === req.body.lineId) {
+            await Stempels.updateOne({ $set: req.body });
             res.status(204).json("The shift transfer values and descriptions has been updated")
         // } else {
         //     res.status(403).json("You can update only your shift transfer values and descriptions");
@@ -37,10 +37,10 @@ router.put("/:id", async (req, res) => {
 // delete a shift transfer
 router.delete("/:shiftTransferItemId", async (req, res) => {
     try {
-        const ShiftTransferValuesAndDescs = await ShiftTransferValuesAndDesc.findById(req.params.shiftTransferItemId);
-        if (ShiftTransferValuesAndDescs) {
-            if (ShiftTransferValuesAndDescs.lineId == req.body.lineId) {
-                await ShiftTransferValuesAndDescs.deleteOne();
+        const Stempels = await Stempel.findById(req.params.shiftTransferItemId);
+        if (Stempels) {
+            if (Stempels.lineId == req.body.lineId) {
+                await Stempels.deleteOne();
                 res.status(204).json("The post of shift transfer has been deleted")
             } else {
                 res.status(403).json("You can delete only your shift transfer");
@@ -66,14 +66,14 @@ router.get("/profile/:personnelnumber", async (req, res) => {
 });
 
 // get all shift Transfers Values And Descriptions
-router.get('/allShiftTransfersValuesAndDescs', async (req, res) => {
+router.get('/allStempels', async (req, res) => {
     try {
-        const shiftTransferValuesAndDesc = await ShiftTransferValuesAndDesc.find({});
-        const shiftTransferValueAndDescMap = {};
-        shiftTransferValuesAndDesc.forEach((shiftTransferValueAndDesc) => {
-            shiftTransferValueAndDescMap[shiftTransferValueAndDesc._id] = shiftTransferValueAndDesc;
+        const stempel = await Stempel.find({});
+        const stempelMap = {};
+        stempel.forEach((stempel) => {
+            stempelMap[stempel._id] = stempel;
         });
-        res.status(200).json(shiftTransferValueAndDescMap);
+        res.status(200).json(stempelMap);
     } catch (err) {
         res.status(500).json(err)
     }

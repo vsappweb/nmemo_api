@@ -8,6 +8,9 @@ const MemoSchema = new mongoose.Schema({
     line: {
         type: String,
     },
+    product: {
+        type: String,
+    },
     title: {
         type: String,
         max: 200
