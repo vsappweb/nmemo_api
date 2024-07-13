@@ -8,6 +8,9 @@ const IncompleetAantalSchema = new mongoose.Schema({
     lineId: {
         type: String,
     },
+    operator: {
+        type: String,
+    },
     date: {
         type: String,
     },
