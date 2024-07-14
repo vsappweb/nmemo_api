@@ -5,6 +5,9 @@ const gmToolSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    problems: {
+        type: String,
+    },
     problem: {
         type: String,
     },
