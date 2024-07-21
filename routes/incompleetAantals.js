@@ -2,11 +2,7 @@ const router = require("express").Router();
 const IncompleetAantal = require("../models/IncompleetAantal");
 const User = require("../models/User");
 
-// router.get("/", (req, res) => {
-//     console.log("Welcome to shift transfer page!")
-// });
-
-//create a shift transfer values and descriptions
+//create a incompleet aantals
 router.post("/", async (req, res) => {
     const newIncompleetAantal = new IncompleetAantal(req.body);
     try {
@@ -18,29 +14,24 @@ router.post("/", async (req, res) => {
     }
 });
 
-// // update a shift transfer values and descriptions
-// router.put("/:id", async (req, res) => {
-//     try {
-//         const ShiftTransferValuesAndDescs = await ShiftTransferValuesAndDesc.findById(req.params.id);
-//         // if (ShiftTransferValuesAndDesc.lineId === req.body.lineId) {
-//             await ShiftTransferValuesAndDescs.updateOne({ $set: req.body });
-//             res.status(204).json("The shift transfer values and descriptions has been updated")
-//         // } else {
-//         //     res.status(403).json("You can update only your shift transfer values and descriptions");
-//         // }
-
-//     } catch (err) {
-//         res.status(500).json(err)
-//     }
-// });
+// update a incompleet aantals
+router.put("/:id", async (req, res) => {
+    try {
+        const IncompleetAantals = await IncompleetAantal.findById(req.params.id);
+            await IncompleetAantals.updateOne({ $set: req.body });
+            res.status(204).json("The incompleet aantals has been updated")
+    } catch (err) {
+        res.status(500).json(err)
+    }
+});
 
 // // delete a shift transfer
 // router.delete("/:shiftTransferItemId", async (req, res) => {
 //     try {
-//         const ShiftTransferValuesAndDescs = await ShiftTransferValuesAndDesc.findById(req.params.shiftTransferItemId);
-//         if (ShiftTransferValuesAndDescs) {
-//             if (ShiftTransferValuesAndDescs.lineId == req.body.lineId) {
-//                 await ShiftTransferValuesAndDescs.deleteOne();
+//         const IncompleetAantals = await IncompleetAantal.findById(req.params.shiftTransferItemId);
+//         if (IncompleetAantals) {
+//             if (IncompleetAantals.lineId == req.body.lineId) {
+//                 await IncompleetAantals.deleteOne();
 //                 res.status(204).json("The post of shift transfer has been deleted")
 //             } else {
 //                 res.status(403).json("You can delete only your shift transfer");
@@ -53,19 +44,7 @@ router.post("/", async (req, res) => {
 //     }
 // });
 
-
-// // get user's all posts
-// router.get("/profile/:personnelnumber", async (req, res) => {
-//     try {
-//         const user = await User.findOne({ personnelnumber: req.params.personnelnumber });
-//         const ShiftTransferItems = await ShiftTransferItems.find({ lineId: user._id });
-//         res.status(200).json(ShiftTransferItems);
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
-
-// get all shift Transfers Values And Descriptions
+// get all incompleet aantals
 router.get('/allIncompleetAantal', async (req, res) => {
     try {
         const incompleetAantal = await IncompleetAantal.find({});

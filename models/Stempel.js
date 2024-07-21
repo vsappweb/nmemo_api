@@ -7,11 +7,13 @@ const StempelSchema = new mongoose.Schema({
     },
     productName: {
         type: String,
-        required: true,
-        max: 200
     },
     stempel: {
         type: String,
+    },
+    productNameAndStempel: {
+        type: Array,
+        default: []
     },
     units: {
         type: Array,

@@ -32,17 +32,17 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
-    
+
         if (user._id == req.params.id) {
-          await user.deleteOne();
-          res.status(200).json("Account has been deleted");
+            await user.deleteOne();
+            res.status(200).json("Account has been deleted");
         } else {
-          res.status(403).json("You can delete only your account!");
+            res.status(403).json("You can delete only your account!");
         }
-      } catch (err) {
+    } catch (err) {
         res.status(500).json(err);
-      }
-    });
+    }
+});
 
 //get a user
 router.get("/", async (req, res) => {

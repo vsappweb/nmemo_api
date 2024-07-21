@@ -2,10 +2,6 @@ const router = require("express").Router();
 const ShiftTransferItem = require("../models/ShiftTransferItem");
 const User = require("../models/User");
 
-// router.get("/", (req, res) => {
-//     console.log("Welcome to shift transfer page!")
-// });
-
 //create a shift transfer
 router.post("/", async (req, res) => {
     const newShiftTransferItem = new ShiftTransferItem(req.body);
@@ -51,58 +47,6 @@ router.delete("/:id", async (req, res) => {
     }
 });
 
-// // like/dislike a post
-// router.put("/:id/like", async (req, res) => {
-//     try {
-//         const post = await Post.findById(req.params.id);
-//         if (!post.likes.includes(req.body.userId)) {
-//             await post.updateOne({ $push: { likes: req.body.userId } });
-//             res.status(200).json("The post has been liked");
-//         } else {
-//             await post.updateOne({ $pull: { likes: req.body.userId } });
-//             res.status(200).json("The post has been disliked");
-//         }
-
-//     } catch (err) {
-//         res.status(500).json(err)
-//     }
-// })
-
-// // like/dislike a post
-// router.put("/:id/love", async (req, res) => {
-//     try {
-//         const post = await Post.findById(req.params.id);
-//         if (!post.loves.includes(req.body.userId)) {
-//             await post.updateOne({ $push: { loves: req.body.userId } });
-//             res.status(200).json("The post has been loved");
-//         } else {
-//             await post.updateOne({ $pull: { loves: req.body.userId } });
-//             res.status(200).json("The post has been disloved");
-//         }
-
-//     } catch (err) {
-//         res.status(500).json(err)
-//     }
-// })
-
-// 
-
-// // get timeline posts
-// router.get("/timeline/:userId", async (req, res) => {
-//     try {
-//         const currentUser = await User.findById(req.params.userId);
-//         const userPosts = await Post.find({ userId: currentUser._id });
-//         const friendPosts = await Promise.all(
-//             currentUser.followings.map((friendId) => {
-//                 return Post.find({ userId: friendId })
-//             })
-//         );
-//         res.status(200).json(userPosts.concat(...friendPosts))
-//     } catch (err) {
-//         res.status(500).json(err)
-//     }
-// });
-
 // get user's all posts
 router.get("/profile/:personnelnumber", async (req, res) => {
     try {
@@ -127,17 +71,6 @@ router.get('/allShiftTransfersItems', async (req, res) => {
         res.status(500).json(err)
     }
 });
-
-
-// get a shift transfer item
-// router.get("/:id", async (req, res) => {
-//     try {
-//         const ShiftTransferItems = await ShiftTransferItem.findById(req.params.id);
-//         res.status(200).json(ShiftTransferItems)
-//     } catch (err) {
-//         res.status(500).json(err)
-//     }
-// });
 
 
 module.exports = router

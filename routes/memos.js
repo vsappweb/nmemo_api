@@ -28,7 +28,6 @@ router.put("/:id", async (req, res) => {
         } else {
             res.status(403).json("You can update only your memo");
         }
-
     } catch (err) {
         res.status(500).json(err)
     }

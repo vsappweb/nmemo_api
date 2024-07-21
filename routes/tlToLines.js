@@ -4,7 +4,7 @@ const User = require("../models/User");
 
 
 
-//add
+//add a new tlToLine
 router.post("/", async (req, res) => {
     const newTlToLine = new TlToLine(req.body);
     try {

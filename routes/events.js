@@ -3,7 +3,7 @@ const Event = require("../models/Event");
 
 
 
-//add
+//add a new event
 router.post("/", async (req, res) => {
     const newEvent = new Event(req.body);
     try {

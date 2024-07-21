@@ -1,9 +1,7 @@
 const router = require("express").Router();
 const PreparedText = require("../models/PreparedText");
 
-
-
-//add
+//add a preparedText
 router.post("/", async (req, res) => {
     const newPreparedText = new PreparedText(req.body);
     try {
@@ -13,7 +11,6 @@ router.post("/", async (req, res) => {
         res.status(500).json(err);
     }
 });
-
 
 // update a preparedText
 router.put("/:id", async (req, res) => {
@@ -25,7 +22,6 @@ router.put("/:id", async (req, res) => {
         res.status(500).json(err)
     }
 });
-
 
 // get all preparedTexts
 router.get('/allPreparedTexts', async (req, res) => {
@@ -40,7 +36,6 @@ router.get('/allPreparedTexts', async (req, res) => {
         res.status(500).json(err)
     }
 });
-
 
 // delete a preparedText
 router.delete("/:id", async (req, res) => {

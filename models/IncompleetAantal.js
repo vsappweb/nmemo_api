@@ -11,6 +11,10 @@ const IncompleetAantalSchema = new mongoose.Schema({
     operator: {
         type: String,
     },
+    hide: {
+        type: Boolean,
+        default: false,
+    },
     date: {
         type: String,
     },

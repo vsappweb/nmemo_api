@@ -43,7 +43,6 @@ router.get("/find/:firstUserId/:secondUserId", async (req,res)=>{
 router.delete("/:id", async (req, res) => {
     try {
         const conversation = await Conversation.findById(req.params.id);
-        // if (post.userId === req.body.userId) {
         if (conversation._id == req.params.id) {
             await conversation.deleteOne();
             res.status(200).json("The conversation has been deleted")
