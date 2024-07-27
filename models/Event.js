@@ -1,27 +1,28 @@
 const mongoose = require("mongoose");
 
-const EventSchema = new mongoose.Schema({
+const EventSchema = new mongoose.Schema(
+  {
     title: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     allDay: {
-        type: Boolean,
-        default: false,
+      type: Boolean,
+      default: false,
     },
     start: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     end: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     desc: {
-        type: String,
+      type: String,
     },
-},
-    { timestamps: true }
+  },
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("Event", EventSchema);

@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
@@ -20,8 +20,7 @@ const incompleetAantalRoute = require("./routes/incompleetAantals");
 const gmToolRoute = require("./routes/gmTools");
 const multer = require("multer");
 const path = require("path");
-const cors = require('cors')
-
+const cors = require("cors");
 
 dotenv.config();
 
@@ -30,25 +29,24 @@ dotenv.config();
 //     .catch((err) => console.log("Not conected"));
 
 try {
-    mongoose.connect(process.env.MONGO_URL);
-    console.log("Connected to MongoDB!");
+  mongoose.connect(process.env.MONGO_URL);
+  console.log("Connected to MongoDB!");
 } catch (error) {
-    console.error("Failed to connect to MongoDB:", error);
+  console.error("Failed to connect to MongoDB:", error);
 }
 
 app.use("/images", express.static(path.join(__dirname, "public/images")));
 
-
 // middleware
-app.use(cors())
+app.use(cors());
 app.use(express.json());
 // app.use(helmet());
 app.use(morgan("common"));
 
 app.use(
-    helmet({
-        crossOriginResourcePolicy: false,
-    })
+  helmet({
+    crossOriginResourcePolicy: false,
+  })
 );
 
 // app.get("/users", (req,res)=>{
@@ -56,23 +54,23 @@ app.use(
 // });
 
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, "public/images")
-    },
-    filename: (req, file, cb) => {
-        // cb(null, file.originalname);
-        cb(null, req.body.name)
-    },
+  destination: (req, file, cb) => {
+    cb(null, "public/images");
+  },
+  filename: (req, file, cb) => {
+    // cb(null, file.originalname);
+    cb(null, req.body.name);
+  },
 });
 
 const upload = multer({ storage: storage });
 app.post("/api/upload", upload.any("file"), (req, res) => {
-    try {
-        return res.status(200).json("File uploaded successfully.")
-    } catch (err) {
-        console.log(err)
-    }
-})
+  try {
+    return res.status(200).json("File uploaded successfully.");
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
@@ -89,12 +87,10 @@ app.use("/api/preparedTexts", preparedTextRoute);
 app.use("/api/incompleetAantals", incompleetAantalRoute);
 app.use("/api/gmTools", gmToolRoute);
 
-
-app.get("", (req,res)=>{
-    res.send("Backend server is running!!!")
+app.get("", (req, res) => {
+  res.send("Backend server is running!!!");
 });
 
-
 app.listen(8800, () => {
-    console.log("Backend server is running!!!")
+  console.log("Backend server is running!!!");
 });

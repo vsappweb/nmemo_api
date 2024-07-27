@@ -1,72 +1,73 @@
 const mongoose = require("mongoose");
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema(
+  {
     personnelnumber: {
-        type: String,
-        required: true,
-        min: 3,
-        max: 25,
-        unique: true,
+      type: String,
+      required: true,
+      min: 3,
+      max: 25,
+      unique: true,
     },
     username: {
-        type: String,
-        min: 3,
-        max: 20,
+      type: String,
+      min: 3,
+      max: 20,
     },
     language: {
-        type: String,
+      type: String,
     },
     email: {
-        type: String,
-        required: true,
-        max: 50,
-        unique: true,
+      type: String,
+      required: true,
+      max: 50,
+      unique: true,
     },
     password: {
-        type: String,
-        required: true,
-        min: 6,
-        max: 50,
+      type: String,
+      required: true,
+      min: 6,
+      max: 50,
     },
     profilePicture: {
-        type: String,
-        default: "",
+      type: String,
+      default: "",
     },
     coverPicture: {
-        type: String,
-        default: "",
+      type: String,
+      default: "",
     },
     followers: {
-        type: Array,
-        default: [],
+      type: Array,
+      default: [],
     },
     followings: {
-        type: Array,
-        default: [],
+      type: Array,
+      default: [],
     },
     inGroup: {
-        type: String,
+      type: String,
     },
     isAdmin: {
-        type: Boolean,
-        default: false,
+      type: Boolean,
+      default: false,
     },
     desc: {
-        type: String,
-        max: 50,
+      type: String,
+      max: 50,
     },
     ghostnumber: {
-        type: String,
+      type: String,
     },
     ghostname: {
-        type: String,
+      type: String,
     },
     role: {
-        type: Number,
-        enum: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-    }
-},
-    { timestamps: true }
+      type: Number,
+      enum: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    },
+  },
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("User", UserSchema);

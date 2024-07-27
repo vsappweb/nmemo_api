@@ -1,37 +1,37 @@
 const mongoose = require("mongoose");
 
-const ShiftTransferSchema = new mongoose.Schema({
+const ShiftTransferSchema = new mongoose.Schema(
+  {
     userId: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     line: {
-        type: String,
+      type: String,
     },
     shiftTransferItems: {
-        type: Array,
+      type: Array,
     },
     date: {
-        type: String,
+      type: String,
     },
     weekday: {
-        type: String,
+      type: String,
     },
     weekNumber: {
-        type: String,
+      type: String,
     },
     shift: {
-        type: String,
+      type: String,
     },
     operator: {
-        type: String,
+      type: String,
     },
     message: {
-        type: String,
-    }
-    
-},
-    { timestamps: true }
+      type: String,
+    },
+  },
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("ShiftTransfer", ShiftTransferSchema);

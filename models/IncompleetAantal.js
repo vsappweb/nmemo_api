@@ -1,26 +1,26 @@
 const mongoose = require("mongoose");
 
-const IncompleetAantalSchema = new mongoose.Schema({
+const IncompleetAantalSchema = new mongoose.Schema(
+  {
     productNumber: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     lineId: {
-        type: String,
+      type: String,
     },
     operator: {
-        type: String,
+      type: String,
     },
     hide: {
-        type: Boolean,
-        default: false,
+      type: Boolean,
+      default: false,
     },
     date: {
-        type: String,
+      type: String,
     },
-    
-},
-    { timestamps: true }
+  },
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("IncompleetAantal", IncompleetAantalSchema);

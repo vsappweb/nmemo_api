@@ -1,28 +1,28 @@
 const mongoose = require("mongoose");
 
-const ShiftTransferItemSchema = new mongoose.Schema({
+const ShiftTransferItemSchema = new mongoose.Schema(
+  {
     shiftTransferId: {
-        type: String,
+      type: String,
     },
     senderLine: {
-        type: String,
+      type: String,
     },
     title: {
-        type: String,
-        required: true,
-        max: 200
+      type: String,
+      required: true,
+      max: 200,
     },
     value: {
-        type: Number,
-        enum: [0, 1, 2],
+      type: Number,
+      enum: [0, 1, 2],
     },
     desc: {
-        type: String,
-        max: 500
-    }
-    
-},
-    { timestamps: true }
+      type: String,
+      max: 500,
+    },
+  },
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("ShiftTransferItem", ShiftTransferItemSchema);

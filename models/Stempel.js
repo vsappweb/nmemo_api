@@ -1,31 +1,31 @@
 const mongoose = require("mongoose");
 
-const StempelSchema = new mongoose.Schema({
+const StempelSchema = new mongoose.Schema(
+  {
     product: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     productName: {
-        type: String,
+      type: String,
     },
     stempel: {
-        type: String,
+      type: String,
     },
     productNameAndStempel: {
-        type: Array,
-        default: []
+      type: Array,
+      default: [],
     },
     units: {
-        type: Array,
-        default: []
+      type: Array,
+      default: [],
     },
     desc: {
-        type: String,
-        max: 200
+      type: String,
+      max: 200,
     },
-
-},
-    { timestamps: true }
+  },
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("Stempel", StempelSchema);

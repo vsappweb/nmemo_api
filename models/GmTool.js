@@ -1,28 +1,28 @@
 const mongoose = require("mongoose");
 
-const gmToolSchema = new mongoose.Schema({
+const gmToolSchema = new mongoose.Schema(
+  {
     toolNumber: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     problems: {
-        type: String,
+      type: String,
     },
     problem: {
-        type: String,
+      type: String,
     },
     howFixed: {
-        type: String,
+      type: String,
     },
     personnelnumber: {
-        type: String,
+      type: String,
     },
     date: {
-        type: String,
+      type: String,
     },
-    
-},
-    { timestamps: true }
+  },
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("GmTool", gmToolSchema);

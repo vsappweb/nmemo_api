@@ -1,40 +1,41 @@
 const mongoose = require("mongoose");
 
-const MemoSchema = new mongoose.Schema({
+const MemoSchema = new mongoose.Schema(
+  {
     userId: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     line: {
-        type: String,
+      type: String,
     },
     product: {
-        type: String,
+      type: String,
     },
     title: {
-        type: String,
-        max: 200
+      type: String,
+      max: 200,
     },
     desc: {
-        type: String,
-        max: 500
+      type: String,
+      max: 500,
     },
     img: {
-        type: String
+      type: String,
     },
     likes: {
-        type: Array,
-        default: []
+      type: Array,
+      default: [],
     },
     loves: {
-        type: Array,
-        default: []
+      type: Array,
+      default: [],
     },
     date: {
-        type: String,
+      type: String,
     },
-},
-    { timestamps: true }
+  },
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("Memo", MemoSchema);

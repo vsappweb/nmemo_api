@@ -1,49 +1,49 @@
 const mongoose = require("mongoose");
 
-const TlToLineSchema = new mongoose.Schema({
+const TlToLineSchema = new mongoose.Schema(
+  {
     userId: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     line: {
-        type: String,
+      type: String,
     },
     title: {
-        type: String,
-        max: 200
+      type: String,
+      max: 200,
     },
     desc: {
-        type: String,
-        max: 500
+      type: String,
+      max: 500,
     },
     img: {
-        type: String
+      type: String,
     },
     timer: {
-        type: String
+      type: String,
     },
     reqRes: {
-        type: Boolean,
-        default: false,
+      type: Boolean,
+      default: false,
     },
     isRead: {
-        type: Array,
-        default: []
+      type: Array,
+      default: [],
     },
     agrees: {
-        type: Array,
-        default: []
+      type: Array,
+      default: [],
     },
     disagrees: {
-        type: Array,
-        default: []
+      type: Array,
+      default: [],
     },
     answer: {
-        type: String,
+      type: String,
     },
-
-},
-    { timestamps: true }
+  },
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("TlToLine", TlToLineSchema);
