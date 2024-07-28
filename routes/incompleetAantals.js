@@ -25,24 +25,24 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// // delete a shift transfer
-// router.delete("/:shiftTransferItemId", async (req, res) => {
-//     try {
-//         const IncompleetAantals = await IncompleetAantal.findById(req.params.shiftTransferItemId);
-//         if (IncompleetAantals) {
-//             if (IncompleetAantals.lineId == req.body.lineId) {
-//                 await IncompleetAantals.deleteOne();
-//                 res.status(204).json("The post of shift transfer has been deleted")
-//             } else {
-//                 res.status(403).json("You can delete only your shift transfer");
-//             }
-//         } else {
-//             res.status(404).json("The shift transfer values and descriptions not found");
-//         }
-//     } catch (err) {
-//         res.status(500).json(err)
-//     }
-// });
+// delete a incompleet aantals
+router.delete("/:id", async (req, res) => {
+    try {
+        const IncompleetAantals = await IncompleetAantal.findById(req.params.id);
+        if (IncompleetAantals) {
+            // if (IncompleetAantals.lineId == req.body.lineId) {
+                await IncompleetAantals.deleteOne();
+                res.status(204).json("The incompleet aantals has been deleted");
+            // } else {
+            //     res.status(403).json("You can delete only your incompleet aantals");
+            // }
+        } else {
+            res.status(404).json("You can delete only your incompleet aantals");
+        }
+    } catch (err) {
+        res.status(500).json(err)
+    }
+});
 
 // get all incompleet aantals
 router.get("/allIncompleetAantal", async (req, res) => {

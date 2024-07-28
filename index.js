@@ -25,9 +25,6 @@ const cors = require("cors");
 dotenv.config();
 
 // mongoose.connect(process.env.MONGO_URL)
-//     .then((success) => console.log("Conected MongoDB!"))
-//     .catch((err) => console.log("Not conected"));
-
 try {
   mongoose.connect(process.env.MONGO_URL);
   console.log("Connected to MongoDB!");
