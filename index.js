@@ -18,6 +18,7 @@ const conversationRoute = require("./routes/conversations");
 const messageRoute = require("./routes/messages");
 const incompleetAantalRoute = require("./routes/incompleetAantals");
 const gmToolRoute = require("./routes/gmTools");
+const actualOrdersRoute = require("./routes/actualOrders");
 const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
@@ -83,6 +84,7 @@ app.use("/api/events", eventRoute);
 app.use("/api/preparedTexts", preparedTextRoute);
 app.use("/api/incompleetAantals", incompleetAantalRoute);
 app.use("/api/gmTools", gmToolRoute);
+app.use("/api/actualOrders", actualOrdersRoute);
 
 app.get("", (req, res) => {
   res.send("Backend server is running!!!");
