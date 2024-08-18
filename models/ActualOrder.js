@@ -33,6 +33,10 @@ const ActualOrderSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    orderAdded: {
+      type: Boolean,
+      default: false,
+    },
     desc: {
       type: String,
       max: 200,

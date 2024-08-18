@@ -9,10 +9,7 @@ const ToolSchema = new mongoose.Schema(
     maintenance: {
       type: Number,
     },
-    howOftenUse: {
-      type: Number,
-    },
-    productName: {
+    productNumber: {
       type: Array,
       default: [],
     },
